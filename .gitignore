@@ -1,0 +1,16 @@
+# --- Rust/Cargo ---
+/target/
+
+# --- Environment Secrets ---
+.env
+.env.local
+
+# --- IDEs ---
+.vscode/
+.zed/
+.idea/
+*.swp
+
+# --- OS Specific ---
+.DS_Store
+Thumbs.db
