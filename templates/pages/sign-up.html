@@ -1,13 +1,17 @@
-{% extends "index.html" %}
-
-{% block title %}
-  Sign up {{ super() }}
-{% endblock %}
-
-{% block meta %}
-  <meta name="description" content="This is sign up page">
-{% endblock %}
-
-{% block main %}
-  <h1>This is Sign up page from template</h1>
+{% extends "index.html" %} {% block title %} Sign up {{ super() }} {% endblock %} {% block meta %}
+<meta name="description" content="This is sign up page" />
+{% endblock %} {% block css %}
+<link rel="stylesheet" href="/static/css/auth.css" />
+{% endblock %} {% block main %}
+<div class="auth-container">
+    <form method="POST" action="/sign-up">
+        <h1 class="auth-heading">Create Account</h1>
+        <input type="text" placeholder="Enter your email" name="email" />
+        <input type="text" placeholder="Enter your password" name="password" />
+        <button class="filled-button" type="submit">Submit</button>
+    </form>
+    <form method="GET" action="/log-in">
+        <button>Already have account? Log In</button>
+    </form>
+</div>
 {% endblock %}
