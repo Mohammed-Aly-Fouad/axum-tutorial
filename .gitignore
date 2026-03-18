@@ -14,3 +14,4 @@
 # --- OS Specific ---
 .DS_Store
 Thumbs.db
+ca.pem
