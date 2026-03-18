@@ -4,7 +4,7 @@ use std::sync::LazyLock;
 use validator::Validate;
 
 static EMAIL_RX: LazyLock<Regex> =
-    LazyLock::new(|| Regex::new(r"^a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z{2,}]$").unwrap());
+    LazyLock::new(|| Regex::new(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$").unwrap());
 
 #[derive(Deserialize, Validate)]
 pub struct AuthFormModel {

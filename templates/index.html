@@ -9,16 +9,11 @@
      <link rel="shortcut icon" href="/static//img/favicon.png">
      {% block css %}
      {% endblock %}
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     </head>
     <body>
         <header>
-            <nav>
-                <a href="/">Home</a>
-                <a href="/create">create</a>
-                <a href="/log-in">log in</a>
-                <a href="/sign-up">sign up</a>
-                <a href="/todos">todos</a>
-            </nav>
+           {% include  "partials/navigation.html" %}
         </header>
         <main>{% block main %} {% endblock %}</main>
     </body>
