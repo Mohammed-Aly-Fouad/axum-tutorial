@@ -23,7 +23,7 @@ pub fn router() -> Router {
         .route("/create", get(create_todos_handler))
         .route("/", get(home))
         .route("/log-in", get(log_in_handler))
-        .route("/sign-up", get(sign_up_handler).post((post_sign_up_handler)))
+        .route("/sign-up", get(sign_up_handler).post(post_sign_up_handler ))
         .route("/todos", get(todos_handler))
         .nest_service("/static", server_dir)
         .layer(
