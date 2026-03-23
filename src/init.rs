@@ -10,7 +10,7 @@ use sqlx::{
 
 pub fn logging() {
     let filter = EnvFilter::builder()
-        .with_default_directive(tracing::Level::INFO.into())
+        .with_default_directive(tracing::Level::TRACE.into())
         .from_env_lossy();
 
     let subscriber = FmtSubscriber::builder()
@@ -23,7 +23,7 @@ pub fn logging() {
 
 
 pub async fn database_connection() -> PgPool {
-    tracing::debug!("Setting up database connection");
+    tracing::info!("Setting up database connection");
     let db_url = dotenvy::var("DATABASE_URL").expect("Failed to get database url from env");
 
     let options = PgConnectOptions::from_str(&db_url)
@@ -36,7 +36,7 @@ pub async fn database_connection() -> PgPool {
         .await
         .expect("failed to connect to the database");
 
-    tracing::debug!("Successfully connected");
+    tracing::info!("Successfully connected");
 
     sqlx::migrate!()
         .run(&pg_pool)

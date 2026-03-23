@@ -1,12 +1,12 @@
-use crate::{models::{
-    templates::{LogInTemplate, SignUpTemplate},
-    user_form_model::AuthFormModel,
+use crate::{data::user, models::{
+    app::AppState, templates::{LogInTemplate, SignUpTemplate}, user_form_model::AuthFormModel
 }};
 use askama::Template;
 use axum::{
     Form,
     http::StatusCode,
     response::{Html, IntoResponse, Redirect, Response},
+    extract::State,
 };
 
 use validator::{Validate};
@@ -17,10 +17,11 @@ pub async fn sign_up_handler() -> Response {
     Html(html_string).into_response()
 }
 
-pub async fn post_sign_up_handler(Form(user_form): Form<AuthFormModel>) -> Response {
+pub async fn post_sign_up_handler(State(app_state): State<AppState>, Form(user_form): Form<AuthFormModel>) -> Response {
     match user_form.validate() {
         Ok(_) => {
-           Redirect::to("/").into_response() 
+            user::create_user(&app_state.connection_pool, &user_form.email, &user_form.password).await.unwrap();
+            Redirect::to("log-in").into_response()
         } ,
 
         Err(errs) => {
