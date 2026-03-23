@@ -41,8 +41,8 @@ pub async fn post_sign_up_handler(State(app_state): State<AppState>, Form(user_f
                 email_error: &email_error,
                 password_error: &password_error
             }.render().unwrap();
-            let resposne = Html(html_string).into_response();
-            (StatusCode::BAD_REQUEST, resposne).into_response()
+            let response = Html(html_string).into_response();
+            (StatusCode::BAD_REQUEST, response).into_response()
             // Redirect::to("/").into_response()
         } 
     }
