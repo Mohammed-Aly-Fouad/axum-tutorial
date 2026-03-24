@@ -1,11 +1,15 @@
-use axum::response::{Html, IntoResponse, Response};
-
 use crate::models::templates::{HomeTemplate};
 
 use askama::Template;
 
+use axum::response::{Html, IntoResponse, Response};
 
-pub async fn home() -> Response {
+use super::errors::AppError;
+
+
+
+
+pub async fn home() -> Result<Response, AppError> {
     let html_string = HomeTemplate {}.render().unwrap();
-    Html(html_string).into_response()
+    Ok(Html(html_string).into_response())
 }

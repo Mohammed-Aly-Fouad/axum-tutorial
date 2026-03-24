@@ -38,4 +38,6 @@ pub async fn create_user(pool: &PgPool, email: &str, password: &str) -> Result<(
 
     Ok(())
 
+    // Err(DataError::Internal("Test error".to_string()))
+
 }

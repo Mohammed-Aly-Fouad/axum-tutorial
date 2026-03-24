@@ -16,9 +16,9 @@ pub struct LogInTemplate {}
 #[template(path = "pages/not-found.html")]
 pub struct NotFoundTemplate {}
 
-#[derive(Template)]
-#[template(path = "pages/server-error.html")]
-pub struct ServerErrorTemplate {}
+// #[derive(Template)]
+// #[template(path = "pages/server-error.html")]
+// pub struct ServerErrorTemplate {}
 
 #[derive(Template)]
 #[template(path = "pages/sign-up.html")]
@@ -31,3 +31,7 @@ pub struct SignUpTemplate<'a> {
 #[derive(Template)]
 #[template(path = "pages/todos.html")]
 pub struct TodosTemplate {}
+
+#[derive(Template)]
+#[template(path = "pages/server-error.html")]
+pub struct ServerErrorTemplate {}
