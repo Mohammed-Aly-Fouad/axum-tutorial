@@ -16,7 +16,7 @@ pub async fn create_user(pool: &PgPool, email: &str, password: &str) -> Result<(
 
     // sqlx::query(&query).bind(email).bind(bytea_hash).execute(pool).await?;
 
-    sqlx::query!("INSERT INTO users(email, password_hash)
+    sqlx::query!("INSERT INTO clients(email, password_hash)
     VALUES($1, $2)",
     email,
     bytea_hash
