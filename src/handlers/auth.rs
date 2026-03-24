@@ -21,7 +21,7 @@ pub async fn post_sign_up_handler(State(app_state): State<AppState>, Form(user_f
     match user_form.validate() {
         Ok(_) => {
             user::create_user(&app_state.connection_pool, &user_form.email, &user_form.password).await.unwrap();
-            Redirect::to("log-in").into_response()
+            Redirect::to("/log-in").into_response()
         } ,
 
         Err(errs) => {
@@ -35,7 +35,7 @@ pub async fn post_sign_up_handler(State(app_state): State<AppState>, Form(user_f
                     password_error = message;
                 }
             });
-            println!("DEBUG RAW ERRORS: {:?}", errs);
+            tracing::debug!("DEBUG RAW ERRORS: {:?}", errs);
             let html_string = SignUpTemplate{
                 email: &user_form.email,
                 email_error: &email_error,
